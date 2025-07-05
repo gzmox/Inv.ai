@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Investing Dashboard</title>
   <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
@@ -36,7 +38,7 @@
 
       <section class="chart">
         <h3>Stock Trend</h3>
-        <div class="chart-placeholder">[Chart Here]</div>
+        <canvas id="stockChart"></canvas>
       </section>
 
       <section class="watchlist">
@@ -68,5 +70,44 @@
       </section>
     </main>
   </div>
+
+  <!-- Chart.js Script -->
+  <script>
+    const ctx = document.getElementById('stockChart').getContext('2d');
+    const stockChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+          label: 'AAPL Price ($)',
+          data: [188, 192, 190, 195, 198],
+          borderColor: '#00ff99',
+          backgroundColor: 'rgba(0, 255, 153, 0.1)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: '#00ff99'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: { color: '#fff' }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#ccc' },
+            grid: { color: '#333' }
+          },
+          y: {
+            ticks: { color: '#ccc' },
+            grid: { color: '#333' }
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
