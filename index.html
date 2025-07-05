@@ -3,76 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stockist Web – Dark UI</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Stockist Web Mockup</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="dashboard">
-    <header class="top-bar">
-      <div class="stock-info">
-        <h1>AAPL</h1>
-        <p class="price">$198.45</p>
-        <p class="change positive">+1.8% ($3.52)</p>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">📈 Stockist</div>
+    <div class="header-right">
+      <input type="text" placeholder="Search stocks…" class="search-bar" />
+      <button class="notification">🔔</button>
+      <div class="user-avatar">U</div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Portfolio</h2>
+      <div class="portfolio-value">
+        <p>Total Value</p>
+        <strong>$25,340.55</strong>
       </div>
-      <nav class="actions">
-        <button>Buy</button>
-        <button>Sell</button>
-      </nav>
-    </header>
 
-    <section class="chart-container">
-      <canvas id="stockChart"></canvas>
-    </section>
-
-    <section class="signal-card">
-      <h2>Today’s Signal</h2>
-      <p class="signal positive">✅ Strong Buy</p>
-      <p>Based on AI-driven trend & sentiment analysis.</p>
-    </section>
-
-    <section class="watchlist">
-      <h2>Watchlist</h2>
-      <ul>
-        <li>
-          <span>GOOGL</span>
-          <span class="change positive">+2.3%</span>
-        </li>
-        <li>
-          <span>TSLA</span>
-          <span class="change negative">-0.7%</span>
-        </li>
-        <li>
-          <span>MSFT</span>
-          <span class="change positive">+0.5%</span>
-        </li>
+      <h3>Watchlist</h3>
+      <ul class="watchlist">
+        <li><span>TSLA</span><span>$210.30</span></li>
+        <li><span>AAPL</span><span>$195.12</span></li>
+        <li><span>AMZN</span><span>$122.88</span></li>
       </ul>
-    </section>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <section class="chart-section">
+        <h3>AAPL - Apple Inc.</h3>
+        <div class="chart-placeholder">[ Chart Placeholder ]</div>
+      </section>
+
+      <section class="details-section">https://dribbble.com/shots/25148333-Stockist-Stock-Market-Investment-Mobile-App
+        <h3>Details</h3>
+        <ul>
+          <li><strong>Market Cap:</strong> $3T</li>
+          <li><strong>P/E Ratio:</strong> 32.5</li>
+          <li><strong>52W High:</strong> $199.50</li>
+          <li><strong>52W Low:</strong> $124.88</li>
+          <li><strong>Dividend Yield:</strong> 0.6%</li>
+        </ul>
+      </section>
+
+      <section class="recommendations">
+        <h3>Recommended for You</h3>
+        <div class="recommendation-cards">
+          <div class="card"><p>MSFT - Microsoft</p><strong>$344.80</strong></div>
+          <div class="card"><p>NVDA - NVIDIA</p><strong>$1,203.45</strong></div>
+          <div class="card"><p>GOOGL - Alphabet</p><strong>$152.10</strong></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Trade Panel -->
+    <aside class="trade-panel">
+      <h3>Buy AAPL</h3>
+      <form class="trade-form">
+        <label>Shares
+          <input type="number" value="10" min="1" />
+        </label>
+        <label>Order Type
+          <select>
+            <option>Market</option>
+            <option>Limit</option>
+          </select>
+        </label>
+        <p class="estimate">Est. Total: <strong>$1,950.00</strong></p>
+        <div class="buttons">
+          <button type="submit" class="buy-btn">Buy</button>
+          <button type="button" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </aside>
   </div>
 
-  <script>
-  const ctx = document.getElementById('stockChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['9AM','10AM','11AM','12PM','1PM','2PM','3PM','4PM'],
-      datasets: [{
-        data: [195,197,196,198,200,199,201,198],
-        borderColor: '#00ff99',
-        backgroundColor: 'rgba(0,255,153,0.2)',
-        tension: 0.4,
-        pointRadius: 0
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        x: { grid: { color: '#333' }, ticks: { color: '#aaa' } },
-        y: { grid: { color: '#333' }, ticks: { color: '#aaa' } }
-      },
-      plugins: { legend: { display: false } }
-    }
-  });
-  </script>
 </body>
 </html>
