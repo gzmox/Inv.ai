@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stockist Web Mockup</title>
+  <title>Stockist Web Expanded</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -24,7 +25,7 @@
       <h2>Portfolio</h2>
       <div class="portfolio-value">
         <p>Total Value</p>
-        <strong>$25,340.55</strong>
+        <strong id="portfolio-value">$25,340.55</strong>
       </div>
 
       <h3>Watchlist</h3>
@@ -39,10 +40,10 @@
     <main class="main">
       <section class="chart-section">
         <h3>AAPL - Apple Inc.</h3>
-        <div class="chart-placeholder">[ Chart Placeholder ]</div>
+        <canvas id="stockChart"></canvas>
       </section>
 
-      <section class="details-section">https://dribbble.com/shots/25148333-Stockist-Stock-Market-Investment-Mobile-App
+      <section class="details-section">
         <h3>Details</h3>
         <ul>
           <li><strong>Market Cap:</strong> $3T</li>
@@ -66,9 +67,9 @@
     <!-- Trade Panel -->
     <aside class="trade-panel">
       <h3>Buy AAPL</h3>
-      <form class="trade-form">
+      <form class="trade-form" id="trade-form">
         <label>Shares
-          <input type="number" value="10" min="1" />
+          <input type="number" value="10" min="1" id="shares-input" />
         </label>
         <label>Order Type
           <select>
@@ -76,14 +77,15 @@
             <option>Limit</option>
           </select>
         </label>
-        <p class="estimate">Est. Total: <strong>$1,950.00</strong></p>
+        <p class="estimate">Est. Total: <strong id="estimated-total">$1,951.20</strong></p>
         <div class="buttons">
           <button type="submit" class="buy-btn">Buy</button>
-          <button type="button" class="cancel-btn">Cancel</button>
+          <button type="button" class="cancel-btn" onclick="document.getElementById('trade-form').reset()">Cancel</button>
         </div>
       </form>
     </aside>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
