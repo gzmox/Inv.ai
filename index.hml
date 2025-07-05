@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Investing Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h1>📊 InvestAI</h1>
+      <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Trending</a>
+        <a href="#">Watchlist</a>
+        <a href="#">Predictions</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <span>Welcome, Investor</span>
+        <div class="profile">🧑</div>
+      </header>
+
+      <section class="cards">
+        <div class="forecast-card">
+          <h2>AAPL</h2>
+          <p>Predicted: <span class="green">+3.2%</span></p>
+          <p>Confidence: 86%</p>
+          <p>Sentiment: 🟢 Positive</p>
+        </div>
+      </section>
+
+      <section class="chart">
+        <h3>Stock Trend</h3>
+        <div class="chart-placeholder">[Chart Here]</div>
+      </section>
+
+      <section class="watchlist">
+        <h3>Watchlist</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Price</th>
+              <th>Forecast</th>
+              <th>Sentiment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GOOGL</td>
+              <td>$2,750</td>
+              <td class="green">+1.8%</td>
+              <td>🟢</td>
+            </tr>
+            <tr>
+              <td>TSLA</td>
+              <td>$690</td>
+              <td class="red">-2.1%</td>
+              <td>🔴</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
