@@ -225,3 +225,38 @@ a {
   border-radius: 6px;
   cursor: pointer;
 }
+@media (max-width: 1024px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar, .trade-panel {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .main {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .recommendation-cards {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
