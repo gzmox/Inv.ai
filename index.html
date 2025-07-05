@@ -3,111 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Investing Dashboard</title>
+  <title>Stockist Web – Dark UI</title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <h1>📊 InvestAI</h1>
-      <nav>
-        <a href="#">Dashboard</a>
-        <a href="#">Trending</a>
-        <a href="#">Watchlist</a>
-        <a href="#">Predictions</a>
-        <a href="#">Settings</a>
+  <div class="dashboard">
+    <header class="top-bar">
+      <div class="stock-info">
+        <h1>AAPL</h1>
+        <p class="price">$198.45</p>
+        <p class="change positive">+1.8% ($3.52)</p>
+      </div>
+      <nav class="actions">
+        <button>Buy</button>
+        <button>Sell</button>
       </nav>
-    </aside>
+    </header>
 
-    <main class="main-content">
-      <header class="topbar">
-        <span>Welcome, Investor</span>
-        <div class="profile">🧑</div>
-      </header>
+    <section class="chart-container">
+      <canvas id="stockChart"></canvas>
+    </section>
 
-      <section class="cards">
-        <div class="forecast-card">
-          <h2>AAPL</h2>
-          <p>Predicted: <span class="green">+3.2%</span></p>
-          <p>Confidence: 86%</p>
-          <p>Sentiment: 🟢 Positive</p>
-        </div>
-      </section>
+    <section class="signal-card">
+      <h2>Today’s Signal</h2>
+      <p class="signal positive">✅ Strong Buy</p>
+      <p>Based on AI-driven trend & sentiment analysis.</p>
+    </section>
 
-      <section class="chart">
-        <h3>Stock Trend</h3>
-        <canvas id="stockChart"></canvas>
-      </section>
-
-      <section class="watchlist">
-        <h3>Watchlist</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Symbol</th>
-              <th>Price</th>
-              <th>Forecast</th>
-              <th>Sentiment</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>GOOGL</td>
-              <td>$2,750</td>
-              <td class="green">+1.8%</td>
-              <td>🟢</td>
-            </tr>
-            <tr>
-              <td>TSLA</td>
-              <td>$690</td>
-              <td class="red">-2.1%</td>
-              <td>🔴</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </main>
+    <section class="watchlist">
+      <h2>Watchlist</h2>
+      <ul>
+        <li>
+          <span>GOOGL</span>
+          <span class="change positive">+2.3%</span>
+        </li>
+        <li>
+          <span>TSLA</span>
+          <span class="change negative">-0.7%</span>
+        </li>
+        <li>
+          <span>MSFT</span>
+          <span class="change positive">+0.5%</span>
+        </li>
+      </ul>
+    </section>
   </div>
 
-  <!-- Chart.js Script -->
   <script>
-    const ctx = document.getElementById('stockChart').getContext('2d');
-    const stockChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-        datasets: [{
-          label: 'AAPL Price ($)',
-          data: [188, 192, 190, 195, 198],
-          borderColor: '#00ff99',
-          backgroundColor: 'rgba(0, 255, 153, 0.1)',
-          fill: true,
-          tension: 0.3,
-          pointRadius: 4,
-          pointBackgroundColor: '#00ff99'
-        }]
+  const ctx = document.getElementById('stockChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['9AM','10AM','11AM','12PM','1PM','2PM','3PM','4PM'],
+      datasets: [{
+        data: [195,197,196,198,200,199,201,198],
+        borderColor: '#00ff99',
+        backgroundColor: 'rgba(0,255,153,0.2)',
+        tension: 0.4,
+        pointRadius: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { grid: { color: '#333' }, ticks: { color: '#aaa' } },
+        y: { grid: { color: '#333' }, ticks: { color: '#aaa' } }
       },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            labels: { color: '#fff' }
-          }
-        },
-        scales: {
-          x: {
-            ticks: { color: '#ccc' },
-            grid: { color: '#333' }
-          },
-          y: {
-            ticks: { color: '#ccc' },
-            grid: { color: '#333' }
-          }
-        }
-      }
-    });
+      plugins: { legend: { display: false } }
+    }
+  });
   </script>
 </body>
 </html>
